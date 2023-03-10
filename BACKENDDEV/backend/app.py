@@ -31,17 +31,26 @@ class UserSchema(ma.Schema):
 user_schema = UserSchema()
 users_schema = UserSchema(many=True)
 
+
+@app.route('/',methods=['GET'])
+def index():
+    return "<h1>Welcome to my Flask App</h1> \n<p>This app handles all the backend and database stuff</p>" 
+
+
+@app.route('/get/',methods=['GET'])
 @app.route('/get',methods=['GET'])
 def get_users():
     all_users = Users.query.all()
     results = users_schema.dump(all_users)
     return jsonify(results)
 
+@app.route('/get/<id>/',methods=['GET'])
 @app.route('/get/<id>',methods=['GET'])
 def get_user(id):
     user = Users.query.get(id)
     return user_schema.jsonify(user)
 
+@app.route('/add/',methods=['POST'])
 @app.route('/add',methods=['POST'])
 def add_user():
     id = request.json['id']
@@ -55,6 +64,7 @@ def add_user():
 
     return user_schema.jsonify(added_user)
 
+@app.route('/delete/<id>/',methods=['DELETE'])
 @app.route('/delete/<id>',methods=['DELETE'])
 def delete_user(id):
     deleted_user = Users.query.get(id)
@@ -63,6 +73,7 @@ def delete_user(id):
 
     return user_schema.jsonify(deleted_user)
 
+@app.route('/update/<id>/',methods=['PUT'])
 @app.route('/update/<id>',methods=['PUT'])
 def update_user(id):
     user = Users.query.get(id)
@@ -77,6 +88,7 @@ def update_user(id):
     db.session.commit()
     return user_schema.jsonify(user)
 
+@app.route('/get_points/',methods=['GET'])
 @app.route('/get_points',methods=['GET'])
 def get_points():
     first_name = request.json['first_name']
