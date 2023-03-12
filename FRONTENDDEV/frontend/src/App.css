@@ -1,8 +1,4 @@
-.App {
-  min-height: 100vh;
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
+div.table-wrapper {
+  max-height: 300px;
+  overflow: auto;
 }

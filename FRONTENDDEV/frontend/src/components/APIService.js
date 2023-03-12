@@ -24,8 +24,8 @@ export default class APIService {
   };
 
   static DeleteUser = async (id) => {
-    const res = await fetch(`http://localhost:5000/delete${id}`, {
-      method: "POST",
+    const res = await fetch(`http://localhost:5000/delete/${id}`, {
+      method: "DELETE",
       header: {
         "Content-Type:": "application/json",
       },
