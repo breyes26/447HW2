@@ -27,7 +27,7 @@ export default class APIService {
     const res = await fetch(`http://localhost:5000/delete/${id}`, {
       method: "DELETE",
       header: {
-        "Content-Type:": "application/json",
+        "Content-Type": "application/json",
       },
     });
     const data = await res.json();
@@ -37,26 +37,20 @@ export default class APIService {
   static UpdateUser = async (id, body) => {
     const res = await fetch(`http://localhost:5000/update/${id}`, {
       method: "PUT",
-      header: {
-        "Content-Type": "application/jason",
+      headers: {
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
     });
-
-    const data = await res.json;
+    const data = await res.json();
     return data;
   };
 
-  static GetPoints = async (body) => {
-    const res = await fetch("http://localhost:5000/get_points", {
-      method: "GET",
-      header: {
-        "Content-Type": "application/js",
-      },
-      body: JSON.stringify(body),
-    });
-
-    const data = await res.json;
+  static GetPoints = async (first_name, last_name) => {
+    const res = await fetch(
+      `http://localhost:5000/get_points/${first_name}/${last_name}`
+    );
+    const data = await res.json();
     return data;
   };
 }

@@ -88,11 +88,9 @@ def update_user(id):
     db.session.commit()
     return user_schema.jsonify(user)
 
-@app.route('/get_points/',methods=['GET'])
-@app.route('/get_points',methods=['GET'])
-def get_points():
-    first_name = request.json['first_name']
-    last_name = request.json['last_name']
+@app.route('/get_points/<first_name>/<last_name>/',methods=['GET'])
+@app.route('/get_points<first_name>/<last_name>',methods=['GET'])
+def get_points(first_name,last_name):
     user = Users.query.filter_by(first_name = first_name,last_name = last_name).first()
     return  {"points" : f"{user.points}"}
 

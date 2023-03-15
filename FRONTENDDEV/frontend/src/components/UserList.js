@@ -1,6 +1,14 @@
 import ListEntry from "./ListEntry";
 
-const UserList = ({ users, onDelete }) => {
+const UserList = ({
+  users,
+  onDelete,
+  onUpdate,
+  showUpdate,
+  setShowUpdate,
+  selectedUser,
+  setSelectedUser,
+}) => {
   return (
     <div className="container flex align-items-center">
       <h2 className="text-center mb-4 text-light">Users</h2>
@@ -21,7 +29,15 @@ const UserList = ({ users, onDelete }) => {
                 {users.map((user) => {
                   return (
                     <tr key={user.id} className="align-middle">
-                      <ListEntry user={user} onDelete={onDelete}></ListEntry>
+                      <ListEntry
+                        user={user}
+                        onDelete={onDelete}
+                        onUpdate={onUpdate}
+                        showUpdate={showUpdate}
+                        setShowUpdate={setShowUpdate}
+                        selectedUser={selectedUser}
+                        setSelectedUser={setSelectedUser}
+                      ></ListEntry>
                     </tr>
                   );
                 })}

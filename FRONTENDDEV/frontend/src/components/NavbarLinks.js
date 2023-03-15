@@ -12,7 +12,7 @@ const NavbarLinks = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <Nav.Link href="/users">Users</Nav.Link>
-              <Nav.Link href="#">Get Points</Nav.Link>
+              <Nav.Link href="/points">Get Points</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

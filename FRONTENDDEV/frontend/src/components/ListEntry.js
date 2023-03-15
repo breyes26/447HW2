@@ -1,9 +1,13 @@
-import React, { useState } from "react";
-import UpdateUser from "./UpdateUser";
+import React from "react";
 
-const ListEntry = ({ user, onDelete }) => {
-  const [showUpdate, setShowUpdate] = useState(false);
+const ListEntry = ({
+  user,
+  onDelete,
+  showUpdate,
+  setShowUpdate,
 
+  setSelectedUser,
+}) => {
   return (
     <>
       <th id={user.id} scope="row">
@@ -24,23 +28,13 @@ const ListEntry = ({ user, onDelete }) => {
           <button
             onClick={(e) => {
               setShowUpdate(!showUpdate);
+              setSelectedUser(user);
             }}
-            className={
-              showUpdate ? "btn btn-sm btn-success" : "btn btn-sm btn-primary"
-            }
+            className="btn btn-sm btn-primary"
           >
-            {showUpdate ? "Confirm" : "Update"}
+            Update
           </button>
         </div>
-      </td>
-      <td>
-        {showUpdate && (
-          <UpdateUser
-            user={user}
-            showUpdate={showUpdate}
-            onUpdate={setShowUpdate}
-          ></UpdateUser>
-        )}
       </td>
     </>
   );

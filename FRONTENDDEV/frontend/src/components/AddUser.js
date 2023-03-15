@@ -44,7 +44,7 @@ const AddUser = ({ onAdd, showAdd, onToggle }) => {
               onChange={(e) => setId(e.target.value)}
             ></input>
           </div>
-          <div className="mt-2">
+          <div className="form-group mt-2">
             <label htmlFor="firstNameInput">First Name</label>
             <input
               type="text"
@@ -77,7 +77,7 @@ const AddUser = ({ onAdd, showAdd, onToggle }) => {
               onChange={(e) => setPoints(e.target.value)}
             ></input>
           </div>
-          <button type="submit" className="mt-3 btn btn-primary">
+          <button type="submit" className="mt-3 btn btn-success">
             Add User
           </button>
         </form>
